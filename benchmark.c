@@ -232,6 +232,17 @@ int main() {
     run_test("Multi-threaded (16 threads)", shm_src, dest9, MEM_SIZE, 16);
     munmap(dest9, MEM_SIZE);
 
+    // Test 9: Multi-threaded (16 Threads warmed)
+    void* dest9b = mmap(NULL, MEM_SIZE, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+    for (size_t i = 0; i < MEM_SIZE; i += PAGE_SIZE) ((char*)dest9b)[i] = 0;
+    run_test("Multi-threaded (16 threads warmed)", shm_src, dest9b, MEM_SIZE, 16);
+    munmap(dest9b, MEM_SIZE);
+
+    // Test 10: Multi-threaded (32 Threads warmed)
+    void* dest10a = mmap(NULL, MEM_SIZE, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+    for (size_t i = 0; i < MEM_SIZE; i += PAGE_SIZE) ((char*)dest10a)[i] = 0;
+    run_test("Multi-threaded (32 threads warmed)", shm_src, dest10a, MEM_SIZE, 32);
+    munmap(dest10a, MEM_SIZE);
 
 
     munmap(shm_src, MEM_SIZE);
