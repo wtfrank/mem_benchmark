@@ -1,6 +1,7 @@
 # Compiler settings
 CC = gcc
-CFLAGS = -O3 -Wall -Wextra
+CFLAGS = -O3 -Wall -Wextra -mavx -march=native -g
+# CFLAGS = -Wall -Wextra -mavx -march=native -g
 LDFLAGS = -lpthread
 
 # Target executable name
