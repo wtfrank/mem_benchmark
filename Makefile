@@ -2,7 +2,7 @@
 CC = gcc
 CFLAGS = -O3 -Wall -Wextra -mavx -march=native -g
 # CFLAGS = -Wall -Wextra -mavx -march=native -g
-LDFLAGS = -lpthread
+LDFLAGS = -lpthread -lrt
 
 # Target executable name
 TARGET = mem_benchmark
